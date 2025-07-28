@@ -1,0 +1,57 @@
+{
+  "id": "dev-environment-id",
+  "name": "Development Environment",
+  "values": [
+    {
+      "key": "baseUrl",
+      "value": "https://jsonplaceholder.typicode.com",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "timeout",
+      "value": "30000",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "contentType",
+      "value": "application/json",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "accept",
+      "value": "application/json",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "authToken",
+      "value": "",
+      "type": "secret",
+      "enabled": false
+    },
+    {
+      "key": "userId",
+      "value": "1",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "postId",
+      "value": "1",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "commentId",
+      "value": "1",
+      "type": "default",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2023-01-01T00:00:00.000Z",
+  "_postman_exported_using": "Postman/10.0.0"
+} 

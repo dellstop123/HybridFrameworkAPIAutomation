@@ -1,0 +1,47 @@
+{
+  "name": "hybrid-api-automation-framework",
+  "version": "1.0.0",
+  "description": "A comprehensive hybrid framework for API automation testing",
+  "main": "index.js",
+  "scripts": {
+    "test:all": "npm run test:restassured && npm run test:pytest && npm run test:postman",
+    "test:restassured": "mvn test -Dtest=TestRunner",
+    "test:pytest": "pytest src/main/python/tests/ -v --html=reports/pytest-report.html",
+    "test:postman": "newman run src/main/resources/postman/collections/ -e src/main/resources/postman/environments/",
+    "test:karate": "mvn test -Dtest=KarateRunner",
+    "report:generate": "allure generate reports/allure-results --clean && allure open",
+    "setup": "npm install && pip install -r requirements.txt && mvn clean install",
+    "clean": "rm -rf reports/* && rm -rf node_modules/ && rm -rf target/",
+    "lint": "eslint src/main/javascript/",
+    "format": "prettier --write src/main/javascript/"
+  },
+  "keywords": [
+    "api",
+    "automation",
+    "testing",
+    "rest-assured",
+    "pytest",
+    "postman",
+    "karate",
+    "bdd",
+    "tdd"
+  ],
+  "author": "API Automation Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^2.8.0",
+    "typescript": "^4.9.0"
+  },
+  "dependencies": {
+    "axios": "^1.3.0",
+    "chai": "^4.3.0",
+    "mocha": "^10.2.0",
+    "newman": "^5.3.0",
+    "supertest": "^6.3.0",
+    "joi": "^17.9.0",
+    "dotenv": "^16.0.0",
+    "winston": "^3.8.0"
+  }
+} 

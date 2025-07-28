@@ -1,0 +1,57 @@
+# Core testing framework
+pytest==7.3.1
+pytest-html==3.2.0
+pytest-xdist==3.3.1
+pytest-cov==4.1.0
+pytest-bdd==6.1.1
+
+# HTTP client libraries
+requests==2.31.0
+httpx==0.24.1
+aiohttp==3.8.5
+
+# Data handling
+pandas==2.0.3
+openpyxl==3.1.2
+xlrd==2.0.1
+jsonschema==4.19.0
+
+# API testing utilities
+jsonschema==4.19.0
+deepdiff==6.7.1
+jsonpath-ng==1.5.3
+
+# Database connectors
+pymongo==4.4.0
+psycopg2-binary==2.9.7
+pymysql==1.1.0
+
+# Configuration and environment
+python-dotenv==1.0.0
+pyyaml==6.0.1
+configparser==6.0.0
+
+# Reporting and logging
+allure-pytest==2.13.2
+loguru==0.7.0
+
+# Utilities
+faker==19.3.1
+python-dateutil==2.8.2
+pytz==2023.3
+
+# GraphQL support
+gql==3.4.0
+graphql-core==3.2.3
+
+# SOAP support
+zeep==4.2.1
+suds-jurko==0.6
+
+# Performance testing
+locust==2.15.1
+
+# Code quality
+black==23.7.0
+flake8==6.0.0
+mypy==1.5.1 

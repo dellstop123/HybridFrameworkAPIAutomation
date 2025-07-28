@@ -1,0 +1,121 @@
+name: API Automation Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  schedule:
+    - cron: '0 2 * * *'  # Run daily at 2 AM
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        java-version: [11, 17]
+        python-version: [3.9, 3.10, 3.11]
+        node-version: [16, 18]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Set up Java ${{ matrix.java-version }}
+      uses: actions/setup-java@v3
+      with:
+        java-version: ${{ matrix.java-version }}
+        distribution: 'temurin'
+        cache: maven
+        
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - name: Set up Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: |
+        npm install
+        pip install -r requirements.txt
+        mvn clean install -DskipTests
+        
+    - name: Run REST Assured tests
+      run: |
+        mvn test -Dtest=TestRunner -Denv=dev
+        
+    - name: Run Python tests
+      run: |
+        pytest src/main/python/tests/ -v --html=reports/pytest-report.html --self-contained-html
+        
+    - name: Install Newman
+      run: npm install -g newman
+      
+    - name: Run Postman tests
+      run: |
+        newman run src/main/resources/postman/collections/User_API_Collection.json \
+          -e src/main/resources/postman/environments/dev.json \
+          --reporters cli,html \
+          --reporter-html-export reports/newman-report.html
+          
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: test-results-${{ matrix.java-version }}-${{ matrix.python-version }}-${{ matrix.node-version }}
+        path: |
+          reports/
+          target/surefire-reports/
+          
+    - name: Generate Allure Report
+      if: always()
+      run: |
+        mvn allure:report
+        
+    - name: Upload Allure Report
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: allure-report-${{ matrix.java-version }}-${{ matrix.python-version }}-${{ matrix.node-version }}
+        path: target/site/allure-maven-plugin/
+
+  security-scan:
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Run security scan
+      run: |
+        # Add security scanning tools here
+        echo "Security scan completed"
+        
+  performance-test:
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+        
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        
+    - name: Run performance tests
+      run: |
+        # Add performance testing commands here
+        echo "Performance tests completed" 

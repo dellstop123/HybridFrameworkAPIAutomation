@@ -1,0 +1,80 @@
+{
+  "dev": {
+    "baseUrl": "https://jsonplaceholder.typicode.com",
+    "timeout": 30000,
+    "retryAttempts": 3,
+    "headers": {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    "auth": {
+      "type": "none"
+    },
+    "database": {
+      "host": "localhost",
+      "port": 3306,
+      "name": "test_db_dev",
+      "username": "test_user",
+      "password": "test_pass"
+    }
+  },
+  "staging": {
+    "baseUrl": "https://api-staging.example.com",
+    "timeout": 30000,
+    "retryAttempts": 3,
+    "headers": {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    "auth": {
+      "type": "bearer",
+      "token": "${STAGING_TOKEN}"
+    },
+    "database": {
+      "host": "staging-db.example.com",
+      "port": 3306,
+      "name": "test_db_staging",
+      "username": "${DB_USERNAME}",
+      "password": "${DB_PASSWORD}"
+    }
+  },
+  "prod": {
+    "baseUrl": "https://api.example.com",
+    "timeout": 30000,
+    "retryAttempts": 3,
+    "headers": {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    "auth": {
+      "type": "bearer",
+      "token": "${PROD_TOKEN}"
+    },
+    "database": {
+      "host": "prod-db.example.com",
+      "port": 3306,
+      "name": "test_db_prod",
+      "username": "${DB_USERNAME}",
+      "password": "${DB_PASSWORD}"
+    }
+  },
+  "local": {
+    "baseUrl": "http://localhost:3000",
+    "timeout": 30000,
+    "retryAttempts": 3,
+    "headers": {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    "auth": {
+      "type": "none"
+    },
+    "database": {
+      "host": "localhost",
+      "port": 3306,
+      "name": "test_db_local",
+      "username": "root",
+      "password": ""
+    }
+  }
+} 

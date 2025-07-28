@@ -1,0 +1,78 @@
+{
+  "users": {
+    "valid_user": {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "username": "johndoe",
+      "phone": "+1-555-123-4567"
+    },
+    "new_user": {
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "username": "janesmith",
+      "phone": "+1-555-987-6543"
+    },
+    "invalid_user": {
+      "name": "",
+      "email": "invalid-email",
+      "username": "",
+      "phone": "invalid-phone"
+    }
+  },
+  "posts": {
+    "valid_post": {
+      "title": "Test Post Title",
+      "body": "This is a test post body content.",
+      "userId": 1
+    },
+    "new_post": {
+      "title": "New Post Title",
+      "body": "This is a new post body content.",
+      "userId": 1
+    }
+  },
+  "comments": {
+    "valid_comment": {
+      "postId": 1,
+      "name": "Test Comment",
+      "email": "test@example.com",
+      "body": "This is a test comment."
+    }
+  },
+  "test_scenarios": {
+    "positive": {
+      "description": "Valid data scenarios",
+      "expected_status": 200,
+      "expected_schema": "valid_schema"
+    },
+    "negative": {
+      "description": "Invalid data scenarios",
+      "expected_status": 400,
+      "expected_schema": "error_schema"
+    },
+    "boundary": {
+      "description": "Boundary value scenarios",
+      "expected_status": 200,
+      "expected_schema": "valid_schema"
+    }
+  },
+  "api_endpoints": {
+    "users": "/users",
+    "posts": "/posts",
+    "comments": "/comments",
+    "albums": "/albums",
+    "photos": "/photos",
+    "todos": "/todos"
+  },
+  "headers": {
+    "content_type": "application/json",
+    "accept": "application/json",
+    "authorization": "Bearer ${TOKEN}"
+  },
+  "timeouts": {
+    "short": 5000,
+    "medium": 15000,
+    "long": 30000
+  }
+} 
