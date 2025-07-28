@@ -24,7 +24,7 @@ jsonpath-ng==1.5.3
 # Database connectors
 pymongo==4.4.0
 psycopg2-binary==2.9.7
-pymysql==1.1.0
+pymysql==1.1.1
 
 # Configuration and environment
 python-dotenv==1.0.0
