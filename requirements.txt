@@ -52,6 +52,6 @@ suds-jurko==0.6
 locust==2.15.1
 
 # Code quality
-black==23.7.0
+black==24.3.0
 flake8==6.0.0
 mypy==1.5.1 
