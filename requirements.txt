@@ -22,7 +22,7 @@ deepdiff==6.7.1
 jsonpath-ng==1.5.3
 
 # Database connectors
-pymongo==4.4.0
+pymongo==4.6.3
 psycopg2-binary==2.9.7
 pymysql==1.1.0
 
