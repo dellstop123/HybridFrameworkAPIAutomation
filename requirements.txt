@@ -18,7 +18,7 @@ jsonschema==4.19.0
 
 # API testing utilities
 jsonschema==4.19.0
-deepdiff==6.7.1
+deepdiff==8.6.2
 jsonpath-ng==1.5.3
 
 # Database connectors
