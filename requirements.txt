@@ -6,7 +6,7 @@ pytest-cov==4.1.0
 pytest-bdd==6.1.1
 
 # HTTP client libraries
-requests==2.31.0
+requests==2.33.0
 httpx==0.24.1
 aiohttp==3.8.5
 
